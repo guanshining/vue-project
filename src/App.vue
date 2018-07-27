@@ -27,6 +27,7 @@
     body{
         width: 100%;
         background: #f5f5f5;
+        padding-bottom: .7rem;
     }
     /* rem 适配 */
     html {font-size: 625%; /*100 ÷ 16 × 100% = 625%*/}

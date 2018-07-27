@@ -1,5 +1,5 @@
 <template>
-    <div class="nav" :style="{'background-color': backColor}">
+    <div class="nav" :style="{'background-color': backColor}" ref="myNav">
         <router-link tag="li" v-for="item in nav" @click.native="href(item.href)" to="#">
             <img :src="item.icon" alt="">
             <span>{{item.text}}</span>
@@ -29,10 +29,12 @@
         props: ['nav', 'backColor'],
         methods: {
             setWidth() {
-                let oLi = document.querySelectorAll('.nav li');
-                oLi.forEach(item => item.style.width = 100 / oLi.length + '%')
+                for (let i = 0; i < this.$refs.myNav.getElementsByTagName('li').length; i++) {
+                    let cur = this.$refs.myNav.getElementsByTagName('li')[i];
+                    cur.style.width = 100 / this.nav.length + '%'
+                }
             },
-            href(url){
+            href(url) {
                 window.location.href = url;
             }
         },
